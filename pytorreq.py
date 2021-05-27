@@ -7,7 +7,7 @@ import time
 
 
 class PyTorReq(object):
-    def __init__(self, proxy_port=9050, ctrl_port=9051, password=None, torPath='tor'):
+    def __init__(self, proxy_port=9050, ctrl_port=9051, password=None, torPath='tor', debug=False):
         self.proxyPort = proxy_port
         self.ctrlPort = ctrl_port
         self.torPath = torPath
@@ -15,9 +15,12 @@ class PyTorReq(object):
         self._tor_proc = None
         self.ctrl = None
         self.session = None
+        self.debug = debug
 
     def launchTorSession(self):
-        if not self._torProccesExists():
+        if self.debug:
+            print(f'Launch new tor session on {self.proxyPort} proxy port, {self.ctrlPort} ctrl port.')
+        if not self._torProcessExists():
             self._tor_proc = self._launchTor()
         self.ctrl = Controller.from_port(port=self.ctrlPort)
         self.ctrl.authenticate(password=self.password)
@@ -52,6 +55,8 @@ class PyTorReq(object):
             self._tor_proc.terminate()
 
     def resetTorIdentity(self):
+        if self.debug:
+            print('Send signal to tor process, NEWNYM, closing session.')
         self.ctrl.signal(Signal.NEWNYM)
         self.ctrl.close()
         self.launchTorSession()
