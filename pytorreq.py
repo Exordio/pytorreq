@@ -86,6 +86,9 @@ class PyTorReq(object):
     def updateTorSessionCookie(self, cookie):
         self.session.cookies.update(requests.utils.dict_from_cookiejar(cookie))
 
+    def getMyIp(self):
+        return self.get('http://ipecho.net/plain').text
+
     def __enter__(self):
         return self
 
