@@ -1,4 +1,4 @@
-# pyTorReq
+# pytorreq
 
 A simple library that allows you to run your requests through the tor network
 

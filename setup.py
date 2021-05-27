@@ -7,7 +7,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='pytorreq',
-      version='0.2.1',
+      version='0.2.2',
       description='A simple python library that allows you to forward requests through the tor network',
       long_description=long_description,
       long_description_content_type='text/markdown',
