@@ -45,8 +45,8 @@ tses = treq.session
 <requests.sessions.Session object at 0x000001FAF5D77B80>
 ```
 
-The library has one method of resetting personality, you can use the one you like best.
-After applying this method you will receive a new identity tor and a new ip address
+The library has one method of resetting personality.
+After applying this method you will receive a new identity tor and a new ip address.
 ```python
 treq.getNewTorIdentity()
 ```
