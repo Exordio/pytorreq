@@ -1,0 +1,8 @@
+pip~=20.2.3
+stem~=1.8.0
+certifi~=2020.12.5
+chardet~=4.0.0
+urllib3~=1.26.5
+idna~=2.10
+setuptools~=49.2.1
+requests~=2.25.1
