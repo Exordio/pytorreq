@@ -3,7 +3,7 @@
 A simple library that allows you to run your requests through the tor network
 
 Basic usage:
-```
+```python
 from pytorreq import PyTorReq
 
 # If you want to use the library on windows, you need to explicitly specify where tor.exe is located.
@@ -36,20 +36,20 @@ Everything is simpler on Linux, I think that linux users do not need to be told 
 
 By default, tor session is generated during class initialization. To get a session object, you can directly refer to it.
 
-```
+```python
 treq = PyTorReq(torPath=torPath)
 tses = treq.session
 <requests.sessions.Session object at 0x000001FAF5D77B80>
 ```
 
 The library has two methods of resetting personality, you can use the one you like best.
-```
+```python
 treq.reset_identity()
 treq.reset_identity_async()
 ```
 There is a wrapper around all the required request methods.
 Just use them as you would with the good old requests module:
-```
+```python
 # GET
 treq.get()
 # POST
@@ -65,7 +65,7 @@ treq.delete()
 There are also methods for working with cookies.
 You can safely transfer regular cookies from requests there.
 
-```
+```python
 # CookieJar obj
 treq.getCookieObj()
 # CookiesDict
@@ -75,7 +75,7 @@ treq.updateTorSessionCookie(cookie)
 ```
 
 Close method.
-```
+```python
 # It will close the session.
 treq.close()
 ```
