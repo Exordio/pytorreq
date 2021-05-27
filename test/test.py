@@ -6,5 +6,5 @@ treq = PyTorReq(torPath='''Q:\\tor Browser\\Browser\\TorBrowser\\Tor\\tor.exe'''
 treq.launchTorSession()
 
 for i in range(10):
-    print(f'''  | {datetime.now().time()} : TOR IP : {treq.get('http://ipecho.net/plain').text} | ''')
+    print(f'''  | {datetime.now().time()} : TOR IP : {treq.getMyIp()} | ''')
     treq.getNewTorIdentity()

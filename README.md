@@ -77,6 +77,12 @@ treq.getCookieDict()
 treq.updateTorSessionCookie(cookie)
 ```
 
+You can get your tor ip via the following method:
+```python
+# it will return string with your ip adr
+treq.getMyIp() 
+```
+
 Close method.
 ```python
 # It will close the session.
