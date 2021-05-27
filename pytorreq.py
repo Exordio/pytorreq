@@ -66,6 +66,7 @@ class PyTorReq(object):
                   ' Trying to reconnect.')
             self.ctrl.signal(Signal.NEWNYM)
             self.ctrl.close()
+            self.launchTorSession()
             self.getNewTorIdentity()
         finally:
             time.sleep(self.ctrl.get_newnym_wait())
