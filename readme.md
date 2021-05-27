@@ -6,7 +6,8 @@ Basic usage:
 ```
 from pytorreq import PyTorReq
 
-# If you want to use the library on windows, you need to explicitly specify where tor.exe is located. Or specify in the system PATH.
+# If you want to use the library on windows, you need to explicitly specify where tor.exe is located.
+# Or specify in the system PATH.
 torPath = 'tor.exe'
 treq = PyTorReq(torPath=torPath)
 
