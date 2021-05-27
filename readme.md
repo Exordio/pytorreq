@@ -79,3 +79,7 @@ Close method.
 # It will close the session.
 treq.close()
 ```
+
+### todos
+
+1. async get/post links.
