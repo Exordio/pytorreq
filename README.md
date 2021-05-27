@@ -14,6 +14,9 @@ treq = PyTorReq(torPath=torPath)
 # If on Linux, then you can not enter anything.
 treq = PyTorReq()
 
+# It launch new tor session.
+treq.launchTorSession()
+
 response = treq.get('http://ipecho.net/plain')
 
 # Is your new tor ip.
