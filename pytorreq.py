@@ -54,7 +54,7 @@ class PyTorReq(object):
         if self._tor_proc:
             self._tor_proc.terminate()
 
-    def resetTorIdentity(self):
+    def getNewTorIdentity(self):
         if self.debug:
             print('Send signal to tor process, NEWNYM, closing session.')
         self.ctrl.signal(Signal.NEWNYM)

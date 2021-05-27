@@ -45,10 +45,10 @@ tses = treq.session
 <requests.sessions.Session object at 0x000001FAF5D77B80>
 ```
 
-The library has two methods of resetting personality, you can use the one you like best.
+The library has one method of resetting personality, you can use the one you like best.
+After applying this method you will receive a new identity tor and a new ip address
 ```python
-treq.reset_identity()
-treq.reset_identity_async()
+treq.getNewTorIdentity()
 ```
 There is a wrapper around all the required request methods.
 Just use them as you would with the good old requests module:
