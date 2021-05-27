@@ -3,3 +3,4 @@ venv
 build
 dist
 pytorreq.egg-info
+test

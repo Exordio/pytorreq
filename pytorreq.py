@@ -1,6 +1,6 @@
 from stem.process import launch_tor_with_config
 from stem.control import Controller
-from stem import Signal, connection
+from stem import Signal, connection, socket
 
 import requests
 import time
@@ -55,21 +55,20 @@ class PyTorReq(object):
             self._tor_proc.terminate()
 
     def getNewTorIdentity(self):
-        if self.debug:
-            print('Send signal to tor process, NEWNYM, closing session.')
-        self.ctrl.signal(Signal.NEWNYM)
-        self.ctrl.close()
         try:
-            self.launchTorSession()
-        except connection.AuthenticationFailure:
-            print('TOR : The connection is not established. the destination computer rejected the connection request.'
-                  ' Trying to reconnect.')
+            if self.debug:
+                print('Send signal to tor process, NEWNYM, closing session.')
             self.ctrl.signal(Signal.NEWNYM)
             self.ctrl.close()
             self.launchTorSession()
+        except:
+            print(
+                'TOR : The connection is not established. the destination computer rejected the connection request.'
+                ' Trying to reconnect.')
+            self.ctrl.close()
+            self.launchTorSession()
             self.getNewTorIdentity()
-        finally:
-            time.sleep(self.ctrl.get_newnym_wait())
+        time.sleep(self.ctrl.get_newnym_wait())
 
     def get(self, *args, **kwargs):
         return self.session.get(*args, **kwargs)
