@@ -1,25 +1,21 @@
-import stem
-from stem.control import Controller
 from stem.process import launch_tor_with_config
+from stem.control import Controller
+from stem import Signal
 
 import requests
 import time
 
 
-class TorRequest(object):
+class PyTorReq(object):
     def __init__(self, proxy_port=9050, ctrl_port=9051, password=None, torPath='tor'):
-
         self.proxyPort = proxy_port
         self.ctrlPort = ctrl_port
         self.torPath = torPath
-
         self._tor_proc = None
         if not self._tor_process_exists():
             self._tor_proc = self._launch_tor()
-
         self.ctrl = Controller.from_port(port=self.ctrlPort)
         self.ctrl.authenticate(password=password)
-
         self.session = requests.Session()
         self.session.proxies.update({
             'http': 'socks5://localhost:%d' % self.proxyPort,
@@ -53,7 +49,7 @@ class TorRequest(object):
             self._tor_proc.terminate()
 
     def reset_identity_async(self):
-        self.ctrl.signal(stem.Signal.NEWNYM)
+        self.ctrl.signal(Signal.NEWNYM)
 
     def reset_identity(self):
         self.reset_identity_async()
