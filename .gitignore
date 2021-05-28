@@ -4,3 +4,5 @@ build
 dist
 pytorreq.egg-info
 test
+setup.cfg
+setup.py
