@@ -26,8 +26,8 @@ class PyTorReq(object):
         self.ctrl.authenticate(password=self.password)
         self.session = requests.Session()
         self.session.proxies.update({
-            'http': 'socks5://localhost:%d' % self.proxyPort,
-            'https': 'socks5h://localhost:%d' % self.proxyPort,
+            'http': f'socks5://localhost:{self.proxyPort}',
+            'https': f'socks5h://localhost:{self.proxyPort}',
         })
 
     def _torProcessExists(self):
