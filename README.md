@@ -26,7 +26,7 @@ print(response.text)
 ## Installation
 
 ```
-pip istall pytorreq
+pip install pytorreq
 ```
 
 ## Dependencies
